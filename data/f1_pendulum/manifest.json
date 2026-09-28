@@ -1,0 +1,75 @@
+{
+  "system": "damped_nonlinear_pendulum",
+  "state_definition": [
+    "theta_rad",
+    "omega_rad_per_s"
+  ],
+  "observation_definition": "angle_rad + sensor_bias_rad + Gaussian_noise_rad",
+  "integrator": "fixed-step RK4",
+  "physical_parameters": {
+    "gravity": 9.81,
+    "length": 1.0,
+    "damping_start": 0.08,
+    "damping_end": null,
+    "initial_angle": 0.6108652381980153,
+    "initial_velocity": 0.0
+  },
+  "datasets": [
+    {
+      "name": "nominal",
+      "description": "Regular angle measurements with low Gaussian sensor noise.",
+      "duration": 20.0,
+      "dt": 0.01,
+      "measurement_stride": 1,
+      "measurement_noise_std": 0.017453292519943295,
+      "damping_end": null,
+      "sensor_bias_rate": 0.0,
+      "seed": 101,
+      "file": "pendulum_nominal.npz",
+      "samples": 2001,
+      "measurements": 2001
+    },
+    {
+      "name": "high_noise",
+      "description": "Regular measurements with four times the nominal sensor noise.",
+      "duration": 20.0,
+      "dt": 0.01,
+      "measurement_stride": 1,
+      "measurement_noise_std": 0.06981317007977318,
+      "damping_end": null,
+      "sensor_bias_rate": 0.0,
+      "seed": 202,
+      "file": "pendulum_high_noise.npz",
+      "samples": 2001,
+      "measurements": 2001
+    },
+    {
+      "name": "sparse_measurements",
+      "description": "A measurement is available only once every ten integration steps.",
+      "duration": 20.0,
+      "dt": 0.01,
+      "measurement_stride": 10,
+      "measurement_noise_std": 0.017453292519943295,
+      "damping_end": null,
+      "sensor_bias_rate": 0.0,
+      "seed": 303,
+      "file": "pendulum_sparse_measurements.npz",
+      "samples": 2001,
+      "measurements": 201
+    },
+    {
+      "name": "parameter_and_sensor_drift",
+      "description": "Damping increases linearly during the run and the angle sensor has a slowly changing positive bias.",
+      "duration": 20.0,
+      "dt": 0.01,
+      "measurement_stride": 1,
+      "measurement_noise_std": 0.017453292519943295,
+      "damping_end": 0.16,
+      "sensor_bias_rate": 0.0006981317007977319,
+      "seed": 404,
+      "file": "pendulum_parameter_and_sensor_drift.npz",
+      "samples": 2001,
+      "measurements": 2001
+    }
+  ]
+}
