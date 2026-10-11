@@ -1,8 +1,35 @@
-# Quantum-Enhanced Digital Twin — F1 simulated environment
+# Pendulum simulation and digital-twin research prototype
 
-This repository currently implements F1: a reproducible simulated physical
-environment for later state-estimation and quantum-enhancement experiments.
-It is software-only; no physical hardware is required for this milestone.
+This repository contains a reproducible damped-pendulum simulator and an
+experimental sensing, estimation and prediction pipeline for the research
+project under Dr. Kumar. All experiments run in software.
+
+The original F1 datasets remain in `data/f1_pendulum`. The `research` package
+adds classical estimation, idealized Ramsey spin sensing, classical surrogate
+models, and an exactly simulated two-qubit kernel. These support the Fall
+project's four-way comparison. Quantum sensing parameters are illustrative,
+and the small quantum model establishes no computational or sensing advantage.
+
+## Current progress
+
+| Milestone | Implementation | Remaining research |
+| --- | --- | --- |
+| F1 | Nonlinear simulator, noise/sparsity/drift datasets, whole-trajectory splits | Larger ensembles |
+| F2 | EKF, RMSE, covariance, NIS/NEES diagnostics | Bias/parameter adaptation |
+| F3 | Binomial Ramsey measurement model, adaptive phase/time, FI/QFI, shot sweep | Physical validation and matched resource budgets |
+| F4 | Polynomial/RBF surrogate selection and learning curves | Broader classical baselines |
+| F5 | Two-qubit fidelity kernel, checkpoints, query-noise ablation | Finite-shot kernels and physical circuit noise |
+| F6 | Four sensing/model combinations, short forecasts and rollouts | Larger statistical study |
+
+Spring prototypes add approximate prediction uncertainty, sequential reading
+requests, diagnostic distrust flags, and OOD/noise stress tests. Autonomous
+actuator control and validated safety/recovery policies remain open.
+
+The default nominal result is 0.31-degree mean 100 ms angle forecast RMSE for
+classical sensing + classical modeling, versus 0.88 for the same sensing +
+quantum kernel. Results average four held-out test trajectories and remain
+preliminary. Read the generated [progress report](results/progress/progress_report.md)
+for all assumptions and comparisons.
 
 ## Environment
 
@@ -63,9 +90,66 @@ python3 -m venv .venv
 ./.venv/bin/python f1/pendulum_simulator.py --output data/f1_pendulum
 ```
 
-The generated datasets are deterministic because every scenario has an
-explicit random seed. The pinned NumPy version and fixed simulation
-parameters ensure that other users reproduce the same numerical results.
+The generated datasets use explicit random seeds. Fixed parameters and the
+pinned NumPy version target consistent numerical results across machines.
+Small platform-dependent floating-point differences may occur. Compressed
+archive byte identity is not the reproducibility criterion.
+
+## Run the complete experiment
+
+After setup, substitute your virtual environment's Python executable for
+`python` in these platform-neutral commands:
+
+```bash
+python -m research.run
+python -m research.report
+```
+
+The default run generates 12 independent initial conditions across four
+scenarios: 6 train, 2 validation, 4 test. Each simulation lasts 10 seconds with
+20 ms integration. The model predicts 100 ms ahead and repeats ten predictions
+for a 1-second rollout. Training and validation use future estimated states as
+targets. Ground truth enters evaluation, not model fitting or sensing controls.
+Models train on nominal conditions only, with 256 training pairs.
+
+Outputs under `results/progress`:
+
+- `summary.json`: averaged metrics, parameters, selected models and limitations
+- `per_trajectory.json`: individual metrics underlying every comparison
+- `manifest.json`: complete trajectory IDs and train/validation/test membership
+- `models/*.npz`: loadable surrogate checkpoints
+- `trajectories/*.npz`: truth, sensor data, estimated states and covariances
+- `progress_report.md`: generated research progress report
+
+Trajectory output is ignored by Git because anyone can regenerate it. The
+original four F1 datasets remain tracked.
+
+For a quicker smoke run:
+
+```bash
+python -m research.run --output results/smoke --train 2 --validation 1 --test 1 --budget 64
+```
+
+To use a saved surrogate:
+
+```python
+import numpy as np
+from research.models import Surrogate
+
+model = Surrogate.load("results/progress/models/classical_classical.npz")
+next_state = model.predict(np.array([[0.2, 0.0]]))  # radians, radians/second
+```
+
+## Export figures
+
+```bash
+python -m pip install -r requirements-plots.txt
+python -m research.figures
+```
+
+This exports scientific plots in PNG and SVG plus editable source data for the
+progress slides. The core experiment requires only NumPy. The slide deck is in
+`output/presentations/Pendulum_Research_Progress_2026-10-08_v2.pptx`, with speaker notes.
 
 ## Verify
 
@@ -84,7 +168,16 @@ macOS/Linux:
 The tests also generate the same scenario twice and compare every output
 array, so reproducibility is checked automatically.
 
-F2 can now add the Extended Kalman Filter without changing the simulator.
-The next research decision is intentionally deferred: whether F3 should add a
-physically motivated quantum-sensing model, such as a simulated magnetometer,
-or use a different quantum measurement abstraction.
+GitHub Actions runs the tests and a small integrated benchmark on Windows and
+Linux with Python 3.11 and 3.12. Local tests check the integrator, EKF covariance,
+Ramsey derivatives and information bound, kernel normalization/PSD,
+checkpoint round trips, and whole-trajectory splitting.
+
+## Research references
+
+- [Degen et al. (2017), Quantum sensing](https://arxiv.org/abs/1611.02427)
+- [Havlicek et al. (2019), Supervised learning with quantum-enhanced feature spaces](https://arxiv.org/abs/1804.11326)
+
+These motivate the sensing and kernel frameworks. The illustrative field
+geometry and small feature circuit are implementation choices for this
+prototype, not validated reproductions of a physical device or either paper.

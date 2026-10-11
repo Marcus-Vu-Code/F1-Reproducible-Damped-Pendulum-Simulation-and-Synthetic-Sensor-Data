@@ -1,0 +1,290 @@
+[
+  {
+    "id": 0,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_00_nominal.npz"
+  },
+  {
+    "id": 0,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_00_high_noise.npz"
+  },
+  {
+    "id": 0,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_00_sparse_measurements.npz"
+  },
+  {
+    "id": 0,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_00_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 1,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_01_nominal.npz"
+  },
+  {
+    "id": 1,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_01_high_noise.npz"
+  },
+  {
+    "id": 1,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_01_sparse_measurements.npz"
+  },
+  {
+    "id": 1,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_01_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 2,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_02_nominal.npz"
+  },
+  {
+    "id": 2,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_02_high_noise.npz"
+  },
+  {
+    "id": 2,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_02_sparse_measurements.npz"
+  },
+  {
+    "id": 2,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_02_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 3,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_03_nominal.npz"
+  },
+  {
+    "id": 3,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_03_high_noise.npz"
+  },
+  {
+    "id": 3,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_03_sparse_measurements.npz"
+  },
+  {
+    "id": 3,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_03_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 4,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_04_nominal.npz"
+  },
+  {
+    "id": 4,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_04_high_noise.npz"
+  },
+  {
+    "id": 4,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_04_sparse_measurements.npz"
+  },
+  {
+    "id": 4,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_04_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 5,
+    "split": "train",
+    "scenario": "nominal",
+    "file": "trajectory_05_nominal.npz"
+  },
+  {
+    "id": 5,
+    "split": "train",
+    "scenario": "high_noise",
+    "file": "trajectory_05_high_noise.npz"
+  },
+  {
+    "id": 5,
+    "split": "train",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_05_sparse_measurements.npz"
+  },
+  {
+    "id": 5,
+    "split": "train",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_05_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 6,
+    "split": "validation",
+    "scenario": "nominal",
+    "file": "trajectory_06_nominal.npz"
+  },
+  {
+    "id": 6,
+    "split": "validation",
+    "scenario": "high_noise",
+    "file": "trajectory_06_high_noise.npz"
+  },
+  {
+    "id": 6,
+    "split": "validation",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_06_sparse_measurements.npz"
+  },
+  {
+    "id": 6,
+    "split": "validation",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_06_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 7,
+    "split": "validation",
+    "scenario": "nominal",
+    "file": "trajectory_07_nominal.npz"
+  },
+  {
+    "id": 7,
+    "split": "validation",
+    "scenario": "high_noise",
+    "file": "trajectory_07_high_noise.npz"
+  },
+  {
+    "id": 7,
+    "split": "validation",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_07_sparse_measurements.npz"
+  },
+  {
+    "id": 7,
+    "split": "validation",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_07_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 8,
+    "split": "test",
+    "scenario": "nominal",
+    "file": "trajectory_08_nominal.npz"
+  },
+  {
+    "id": 8,
+    "split": "test",
+    "scenario": "high_noise",
+    "file": "trajectory_08_high_noise.npz"
+  },
+  {
+    "id": 8,
+    "split": "test",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_08_sparse_measurements.npz"
+  },
+  {
+    "id": 8,
+    "split": "test",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_08_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 9,
+    "split": "test",
+    "scenario": "nominal",
+    "file": "trajectory_09_nominal.npz"
+  },
+  {
+    "id": 9,
+    "split": "test",
+    "scenario": "high_noise",
+    "file": "trajectory_09_high_noise.npz"
+  },
+  {
+    "id": 9,
+    "split": "test",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_09_sparse_measurements.npz"
+  },
+  {
+    "id": 9,
+    "split": "test",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_09_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 10,
+    "split": "test",
+    "scenario": "nominal",
+    "file": "trajectory_10_nominal.npz"
+  },
+  {
+    "id": 10,
+    "split": "test",
+    "scenario": "high_noise",
+    "file": "trajectory_10_high_noise.npz"
+  },
+  {
+    "id": 10,
+    "split": "test",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_10_sparse_measurements.npz"
+  },
+  {
+    "id": 10,
+    "split": "test",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_10_parameter_and_sensor_drift.npz"
+  },
+  {
+    "id": 11,
+    "split": "test",
+    "scenario": "nominal",
+    "file": "trajectory_11_nominal.npz"
+  },
+  {
+    "id": 11,
+    "split": "test",
+    "scenario": "high_noise",
+    "file": "trajectory_11_high_noise.npz"
+  },
+  {
+    "id": 11,
+    "split": "test",
+    "scenario": "sparse_measurements",
+    "file": "trajectory_11_sparse_measurements.npz"
+  },
+  {
+    "id": 11,
+    "split": "test",
+    "scenario": "parameter_and_sensor_drift",
+    "file": "trajectory_11_parameter_and_sensor_drift.npz"
+  }
+]
